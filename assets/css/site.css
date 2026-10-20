@@ -81,10 +81,10 @@ svg{width:1em;height:1em;flex:none}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav-h) + 32px) 0 64px;overflow:hidden;isolation:isolate}
-.hero-fundo{position:absolute;inset:0;z-index:-1;background:var(--gesso) url(../img/relevo.webp) center/cover no-repeat}
+.hero-fundo{position:absolute;inset:0;z-index:-1;background:var(--gesso) url(../img/relevo.webp?v=2) center/cover no-repeat}
 .fundo-gl,.fundo-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s var(--ease)}
 .fundo-gl.on,.fundo-vid.on{opacity:1}
-.hero-fundo::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(231,230,227,.82) 18%,rgba(231,230,227,.25) 52%,rgba(231,230,227,0) 70%),linear-gradient(0deg,var(--gesso),rgba(231,230,227,0) 22%)}
+.hero-fundo::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(231,230,227,.88) 30%,rgba(231,230,227,.3) 54%,rgba(231,230,227,0) 66%),linear-gradient(0deg,var(--gesso),rgba(231,230,227,0) 22%)}
 .hero-in{width:100%;max-width:var(--larg);margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,88px);align-items:center}
 .hero-logo{width:min(520px,100%);margin:0 0 28px -1.5%;color:var(--tinta)}
 .hero-lead{max-width:31em;font-size:clamp(1.02rem,1.4vw,1.14rem);color:#2b2b2e}
@@ -251,7 +251,7 @@ svg{width:1em;height:1em;flex:none}
 
 /* chamada final */
 .fim{position:relative;padding:clamp(96px,14vw,170px) 0;text-align:center;overflow:hidden;isolation:isolate;border-top:1px solid var(--fio)}
-.fim-fundo{position:absolute;inset:0;z-index:-1;background:var(--gesso) url(../img/relevo.webp) center/cover no-repeat}
+.fim-fundo{position:absolute;inset:0;z-index:-1;background:var(--gesso) url(../img/relevo.webp?v=2) center/cover no-repeat}
 .fim-fundo::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 62% 72% at 50% 50%,rgba(231,230,227,.93) 30%,rgba(231,230,227,.35) 80%)}
 .fim-in{padding:0 var(--gut)}
 .fim h2{font-size:clamp(2rem,5.4vw,3.8rem);text-transform:uppercase;max-width:15ch;margin:0 auto}
@@ -306,7 +306,7 @@ svg{width:1em;height:1em;flex:none}
   .btn-nav span{display:none}
   .btn-nav{width:46px;padding:0}
   .hero{min-height:auto;padding:calc(var(--nav-h) + 24px) 0 48px}
-  .hero-fundo{background-image:url(../img/relevo-m.webp);background-position:center top}
+  .hero-fundo{background-image:url(../img/relevo-m.webp?v=2);background-position:center top}
   .hero-fundo::after{background:linear-gradient(180deg,rgba(231,230,227,.5),rgba(231,230,227,.2) 45%,rgba(231,230,227,0) 70%),linear-gradient(0deg,var(--gesso),rgba(231,230,227,0) 20%)}
   .hero-in{grid-template-columns:1fr;gap:34px}
   .hero-txt{text-align:center}

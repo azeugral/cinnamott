@@ -64,7 +64,7 @@
     };
     if (calmo) { T.desenhar(0, ex); cv.classList.add('on'); } else requestAnimationFrame(quadro);
   };
-  if (toque) tocaVideo(hv, innerWidth > innerHeight ? 'assets/video/relevo-deitado.mp4' : 'assets/video/relevo-celular.mp4');
+  if (toque) tocaVideo(hv, innerWidth > innerHeight ? 'assets/video/relevo-deitado.mp4?v=2' : 'assets/video/relevo-celular.mp4?v=2');
   else vivo();
   $$('.fim-fundo .fundo-vid').forEach(v => tocaVideo(v, v.dataset.src));
 

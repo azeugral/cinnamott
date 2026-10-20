@@ -8,7 +8,7 @@ Publicado em https://azeugral.github.io/cinnamott/ (com `noindex` até a cliente
 
 - **Gesso, tinta e sangue**, tirados das artes da própria Carol: ela apresenta os desenhos disponíveis em estátuas e manequins cinza, com tribal fantasma em relevo no fundo.
   Gesso `#e7e6e3`, papel `#f3f2ef`, tinta `#0d0d0f`, vermelho `#c8102e`.
-- **Hero:** `assets/js/relevo.js`, relevo de gesso calculado em shader e espelhado num eixo atrás da foto. Os fios afinam até virar ponta, como um traço de cybertribal. Desktop roda ao vivo (até 2x DPR, baixa sozinho se pesar); toque usa os MP4 de `tools/gerar_video.py`.
+- **Hero:** `assets/js/relevo.js`, fios de cybersigil em shader sobre gesso: curvas lisas (só senos, simétricas pela fórmula), espessura medida em pixels, traços que afinam até a ponta e um brilho prata correndo. A v1 era um relevo de gesso com veios (reprovado: "não fluido"). Desktop roda ao vivo (até 2x DPR, baixa sozinho se pesar); toque usa os MP4 de `tools/gerar_video.py`.
 - **Logo:** lettering "cinnamott" gerado por IA no Figma (arquivo "Cinnamott - assets") e vetorizado (`tools/vetorizar.py`). Entra como máscara CSS.
 - **Mascote:** o avatar do Instagram dela, vetorizado. Está no "Quem tatua" e no favicon (`tools/favicon.py`).
 - Fontes Unbounded, IBM Plex Sans e JetBrains Mono. Botão reto em placa com filete interno, a tinta vermelha sobe no hover.

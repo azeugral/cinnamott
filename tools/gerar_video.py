@@ -1,7 +1,7 @@
 """Renderiza o relevo de gesso (assets/js/relevo.js) quadro a quadro num Edge headless e gera
 assets/video/relevo-celular.mp4 (em pé, hero no celular), assets/video/relevo-deitado.mp4 (chamada final e
 tablet deitado) e os pôsteres assets/img/relevo-m.webp e relevo.webp. O loop fecha sem emenda (fase 0 → 2π).
-Uso: python tools/gerar_video.py [--so-poster]"""
+Uso: python tools/gerar_video.py [--so-poster | --so-deitado]"""
 import os, subprocess, base64, io
 from playwright.sync_api import sync_playwright
 import imageio_ffmpeg
@@ -11,13 +11,13 @@ AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI)
 VID = os.path.join(SITE, 'assets', 'video'); IMG = os.path.join(SITE, 'assets', 'img')
 FPS, SEGUNDOS = 30, 40                      # mesmo ciclo do desktop (2π em 40 s)
 # nome, largura, altura, eixo do espelho, pôster, quadro do pôster
-VERSOES = [('relevo-celular', 864, 1872, .5, 'relevo-m.webp', 0), ('relevo-deitado', 1920, 1080, .5, None, 0)]
+VERSOES = [('relevo-celular', 864, 1872, .5, 'relevo-m.webp', 0), ('relevo-deitado', 1280, 720, .5, None, 0)]
 
 def renderizar(nome, w, h, eixo, poster, qp):
     q = FPS * SEGUNDOS
     mp4 = os.path.join(VID, nome + '.mp4')
     enc = subprocess.Popen([imageio_ffmpeg.get_ffmpeg_exe(), '-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', str(FPS), '-c:v', 'png', '-i', '-',
-        '-c:v', 'libx264', '-preset', 'slow', '-crf', '29', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-movflags', '+faststart', '-an', mp4], stdin=subprocess.PIPE)
+        '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-movflags', '+faststart', '-an', mp4], stdin=subprocess.PIPE)
     with sync_playwright() as p:
         b = p.chromium.launch(channel='msedge', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader'])
         pg = b.new_page(viewport={'width': w, 'height': h})
@@ -50,4 +50,6 @@ if __name__ == '__main__':
     os.makedirs(VID, exist_ok=True)
     poster_desktop()
     if '--so-poster' not in sys.argv:
-        for v in VERSOES: renderizar(*v)
+        for v in VERSOES:
+            if '--so-deitado' in sys.argv and v[0] != 'relevo-deitado': continue
+            renderizar(*v)
