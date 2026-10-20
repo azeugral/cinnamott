@@ -28,45 +28,40 @@
   bm.addEventListener('click', () => abreMenu(menu.hidden));
   $$('a', menu).forEach(a => a.addEventListener('click', () => abreMenu(false)));
 
-  /* fundo: relevo de gesso espelhado, ao vivo no desktop (WebGL) e MP4 em loop no toque */
-  const fundo = $('.hero-fundo'), cv = $('.fundo-gl', fundo), hv = $('.fundo-vid', fundo);
+  /* fundos: drapeado de gesso ao vivo (WebGL) no hero e na chamada final; sem WebGL fica o pôster.
+     O shader é leve, então roda também no celular, com menos resolução e a 30 quadros. */
   const toque = matchMedia('(hover: none), (pointer: coarse), (max-width: 760px)').matches;
-  const tocaVideo = (v, src) => {
-    if (calmo) return;
-    v.src = src;
-    v.addEventListener('playing', () => v.classList.add('on'), { once: true });
-    new IntersectionObserver(([e]) => e.isIntersecting ? v.play().catch(() => {}) : v.pause()).observe(v.parentElement);
-  };
-  /* eixo do espelho: no centro da foto do hero */
-  const eixo = () => { const f = $('.hero-foto').getBoundingClientRect(); return Math.min(.85, Math.max(.5, (f.left + f.width / 2) / innerWidth)); };
-  const vivo = () => {
+  const CICLO = 48000;
+  $$('.fundo-gl').forEach(cv => {
+    const fundo = cv.parentElement;
     let T;
     try { T = relevoGL(cv); } catch (e) { T = null; }
     if (!T) return;
-    /* resolução real da tela (até 2x); se o quadro passar de ~22 ms em média, baixa em degraus */
-    const CICLO = 40000;
-    let esc = Math.min(devicePixelRatio || 1, 2), ex = eixo();
-    const ajusta = () => { T.tamanho(Math.round(fundo.clientWidth * esc), Math.round(fundo.clientHeight * esc)); ex = eixo(); };
-    ajusta(); addEventListener('resize', ajusta);
-    let ve = true, ult = 0, soma = 0, n = 0, t0 = performance.now();
-    new IntersectionObserver(([e]) => { ve = e.isIntersecting; ult = 0; }).observe(fundo);
+    /* resolução: até 1,5x no desktop e 1x no toque; se o quadro passar de ~24 ms em média, baixa em degraus */
+    let esc = Math.min(devicePixelRatio || 1, toque ? 1 : 1.5);
+    const ajusta = () => T.tamanho(Math.round(fundo.clientWidth * esc), Math.round(fundo.clientHeight * esc));
+    ajusta(); new ResizeObserver(ajusta).observe(fundo);
+    const passo = toque ? 1000 / 30 : 0;
+    let ve = false, rodando = false, ult = 0, soma = 0, n = 0, t0 = performance.now(), ultQ = 0;
+    const desenha = t => { T.desenhar(((t - t0) % CICLO) / CICLO * 6.283185307179586); cv.classList.add('on'); };
+    if (calmo) { desenha(t0); return; }
     const quadro = t => {
+      if (!ve || document.hidden) { rodando = false; ult = 0; return; }
       requestAnimationFrame(quadro);
-      if (!ve || document.hidden) { ult = 0; return; }
+      if (t - ultQ < passo - 2) return;
+      ultQ = t;
       if (ult) { soma += t - ult; n++; }
       ult = t;
       if (n === 40) {
-        if (soma / n > 22 && esc > .6) { esc = Math.max(.6, esc * .8); ajusta(); }
+        if (soma / n > Math.max(24, passo * 1.4) && esc > .5) { esc = Math.max(.5, esc * .8); ajusta(); }
         soma = 0; n = 0;
       }
-      T.desenhar(((t - t0) % CICLO) / CICLO * 6.283185307179586, ex);
-      cv.classList.add('on');
+      desenha(t);
     };
-    if (calmo) { T.desenhar(0, ex); cv.classList.add('on'); } else requestAnimationFrame(quadro);
-  };
-  if (toque) tocaVideo(hv, innerWidth > innerHeight ? 'assets/video/relevo-deitado.mp4' : 'assets/video/relevo-celular.mp4');
-  else vivo();
-  $$('.fim-fundo .fundo-vid').forEach(v => tocaVideo(v, v.dataset.src));
+    const liga = () => { if (ve && !document.hidden && !rodando) { rodando = true; requestAnimationFrame(quadro); } };
+    new IntersectionObserver(([e]) => { ve = e.isIntersecting; liga(); }).observe(fundo);
+    document.addEventListener('visibilitychange', liga);
+  });
 
   /* hero: fotos passam sozinhas */
   const fotos = $$('.hero-quadro img'), tit = $('.hero-tit'), cont = $('.hero-cont b'), bar = $('.hero-barra i');

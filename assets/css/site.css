@@ -82,8 +82,8 @@ svg{width:1em;height:1em;flex:none}
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav-h) + 32px) 0 64px;overflow:hidden;isolation:isolate}
 .hero-fundo{position:absolute;inset:0;z-index:-1;background:var(--gesso) url(../img/relevo.webp) center/cover no-repeat}
-.fundo-gl,.fundo-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s var(--ease)}
-.fundo-gl.on,.fundo-vid.on{opacity:1}
+.fundo-gl{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s var(--ease)}
+.fundo-gl.on{opacity:1}
 .hero-fundo::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(231,230,227,.82) 18%,rgba(231,230,227,.25) 52%,rgba(231,230,227,0) 70%),linear-gradient(0deg,var(--gesso),rgba(231,230,227,0) 22%)}
 .hero-in{width:100%;max-width:var(--larg);margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,88px);align-items:center}
 .hero-logo{width:min(520px,100%);margin:0 0 28px -1.5%;color:var(--tinta)}

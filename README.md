@@ -8,7 +8,7 @@ Publicado em https://azeugral.github.io/cinnamott/ (com `noindex` até a cliente
 
 - **Gesso, tinta e sangue**, tirados das artes da própria Carol: ela apresenta os desenhos disponíveis em estátuas e manequins cinza, com tribal fantasma em relevo no fundo.
   Gesso `#e7e6e3`, papel `#f3f2ef`, tinta `#0d0d0f`, vermelho `#c8102e`.
-- **Hero:** `assets/js/relevo.js`, relevo de gesso calculado em shader e espelhado num eixo atrás da foto. Os fios afinam até virar ponta, como um traço de cybertribal. Desktop roda ao vivo (até 2x DPR, baixa sozinho se pesar); toque usa os MP4 de `tools/gerar_video.py`.
+- **Fundo do hero e da chamada final:** `assets/js/relevo.js`, drapeado de gesso calculado em shader: dobras largas que escorrem devagar e três veios finos que seguem as curvas de nível, afinando como traço de cybertribal sem se partir. Roda ao vivo em todo aparelho (até 1,5x DPR no desktop, 1x e 30 quadros no celular, baixa sozinho se pesar). Sem WebGL ou com movimento reduzido fica o pôster de `tools/gerar_poster.py`.
 - **Logo:** lettering "cinnamott" gerado por IA no Figma (arquivo "Cinnamott - assets") e vetorizado (`tools/vetorizar.py`). Entra como máscara CSS.
 - **Mascote:** o avatar do Instagram dela, vetorizado. Está no "Quem tatua" e no favicon (`tools/favicon.py`).
 - Fontes Unbounded, IBM Plex Sans e JetBrains Mono. Botão reto em placa com filete interno, a tinta vermelha sobe no hover.
@@ -37,4 +37,4 @@ Publicado em https://azeugral.github.io/cinnamott/ (com `noindex` até a cliente
 python -m http.server 8803
 ```
 
-Ferramentas (Python + Playwright com Edge): `tools/processar.py`, `tools/gerar_video.py`, `tools/vetorizar.py` (rodar da pasta do projeto), `tools/favicon.py`, `tools/og.py`.
+Ferramentas (Python + Playwright com Edge): `tools/processar.py`, `tools/gerar_poster.py`, `tools/vetorizar.py` (rodar da pasta do projeto), `tools/favicon.py`, `tools/og.py`.
