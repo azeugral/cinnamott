@@ -16,7 +16,7 @@ Publicado em https://azeugral.github.io/cinnamott/ (com `noindex` até a cliente
 ## Conteúdo
 
 - Extração completa do Instagram em `../_ref/ig` (159 posts, 470 fotos, `dados.json` com legendas) e destaques em `../_ref/ig/hl` (dispo, freehand, cruz1, cruz2, outras, chaves = cicatrizadas). Folhas de contato em `../_ref/folhas` e `../_ref/folhas-hl`.
-- Imagens do site saem de `tools/processar.py` (listas OBRAS, HERO, FH, CIC, FLASH).
+- Imagens do site saem de `tools/processar.py` (listas OBRAS, HERO, FH, FLASH).
 - Contato: o link da bio (bit.ly/cinnamott) aponta para `https://wa.me/message/2ZP356FIXYL6A1`. O "Monte sua mensagem" copia o texto e abre esse link, porque link `wa.me/message` não aceita texto pré-preenchido.
 
 ## CONFIRMAR com a cliente
@@ -27,7 +27,7 @@ Publicado em https://azeugral.github.io/cinnamott/ (com `noindex` até a cliente
 4. **Agenda:** o site diz que a agenda abre por mês com sessões nos fins de semana (legenda de 05/10). Confirmar dias e horários.
 5. **Prazo de resposta de 1 a 2 dias úteis** veio de uma legenda de 2023.
 6. **"Quatro anos de tattoo"** veio do post "4 anos atrás" de 17/10/2026.
-7. **Fotos:** confirmar se pode usar as fotos de clientes do portfólio e das cicatrizadas (todas públicas no perfil dela).
+7. **Fotos:** confirmar se pode usar as fotos de clientes do portfólio (todas públicas no perfil dela). A seção Cicatrizadas saiu a pedido do usuário; as fotos seguem em `../_ref/ig/hl/chaves`.
 8. **Sobre:** Corinthians, show de rock e pug saíram dos posts pessoais. Ela pode querer outro texto.
 9. Domínio próprio, se ela quiser (hoje é GitHub Pages).
 

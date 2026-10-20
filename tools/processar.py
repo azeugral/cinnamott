@@ -3,7 +3,7 @@ import json, os
 from PIL import Image, ImageOps
 R = os.path.join(os.path.dirname(__file__), '..', '..', '_ref', 'ig')
 A = os.path.join(os.path.dirname(__file__), '..', 'assets', 'img')
-for d in ('obras', 'cic', 'flash', 'fh'): os.makedirs(f'{A}/{d}', exist_ok=True)
+for d in ('obras', 'flash', 'fh'): os.makedirs(f'{A}/{d}', exist_ok=True)
 
 # (post, categoria, título, fotos do post, desvio vertical do recorte da capa 0..1)
 OBRAS = [
@@ -65,7 +65,6 @@ OBRAS = [
 HERO = [('065_1',.3),('028_1',.35),('020_1',.45),('033_1',.45),('095_4',.5)]
 # free hand: (desenho de caneta, tattoo pronta, título)
 FH = [('033_4','033_1','Ombro'),('028_5','028_2','Braço inteiro'),('071_3','071_1','Peito'),('009_3','009_1','Bíceps')]
-CIC = ['006','007','016','021','023','028']
 FLASH = ['011_2','011_12','011_13','011_15','011_17','011_19','011_20','011_6','011_1','021_1','021_7','026_1']
 
 def corta(im, ar, dy=.5):
@@ -91,8 +90,6 @@ for i,(f,dy) in enumerate(HERO, 1):
 for i,(a,b,_) in enumerate(FH, 1):
     salva(corta(img(a), 4/5, .45), f'{A}/fh/{i}-a.webp', 900, 80)
     salva(corta(img(b), 4/5, .45), f'{A}/fh/{i}-b.webp', 900, 80)
-for i,h in enumerate(CIC, 1):
-    salva(corta(Image.open(f'{R}/hl/chaves/{h}.jpg'), 4/5, .5), f'{A}/cic/{i}.webp', 480, 82)
 for i,f in enumerate(FLASH, 1):
     im = img(f); salva(corta(im, 4/5, .5), f'{A}/flash/{i:02d}.webp', 720, 80); salva(im, f'{A}/flash/{i:02d}-g.webp', 1280, 82)
 json.dump(saida, open(os.path.join(os.path.dirname(__file__), '..', 'assets', 'obras.json'), 'w', encoding='utf8'), ensure_ascii=False, indent=1)

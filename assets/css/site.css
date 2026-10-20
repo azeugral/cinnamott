@@ -180,9 +180,6 @@ svg{width:1em;height:1em;flex:none}
 .preco small{font:500 .78rem/1 var(--f-mono);color:var(--cinza)}
 .precos-nota{grid-column:1/-1;text-align:center;color:var(--cinza);font-size:.93rem;margin-top:8px}
 
-/* cicatrizadas */
-.cic{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
-.cic img{aspect-ratio:4/5;width:100%;object-fit:cover;border:1px solid var(--fio)}
 
 /* como agendar */
 .passos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -292,7 +289,6 @@ svg{width:1em;height:1em;flex:none}
   .nav-menu{display:block;margin-left:0}
   .estilos,.passos{grid-template-columns:repeat(2,1fr)}
   .grade,.flash{grid-template-columns:repeat(3,1fr)}
-  .cic{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:860px){
   .fh{grid-template-columns:1fr}
@@ -324,7 +320,6 @@ svg{width:1em;height:1em;flex:none}
   .filtros button{flex:none}
   .grade,.flash{grid-template-columns:repeat(2,1fr);gap:10px}
   .obra-leg{font-size:.8rem}
-  .cic{grid-template-columns:repeat(2,1fr)}
   .passos{grid-template-columns:1fr}
   .msg{margin-left:calc(var(--gut) * -1);margin-right:calc(var(--gut) * -1);border-left:0;border-right:0}
   .msg-campos{grid-template-columns:1fr}
